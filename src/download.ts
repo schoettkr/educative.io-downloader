@@ -47,6 +47,8 @@ export async function fetchAllCoursesAvailableToDownload(url: string, cursor: st
 }
 
 export async function downloadCourse(courseUrl: string) {
+  console.log(courseUrl)
+  // First lesson to take links from sidebar, because overview doesn't have any href attributes in its link anymore
   const pageLinks: PageTitleAndLink[] = await fetchLessonUrls(courseUrl);
 
   let pageNumber = 1;
@@ -89,8 +91,12 @@ async function fetchLessonUrls(courseUrl: string): Promise<PageTitleAndLink[]> {
 
   console.log(`Looking for lessons\'s urls`);
 
+  // Timeout for auto-login
+  await new Promise(r => setTimeout(r, 10000));
+
+
   const pageLinks = await page.evaluate(() => {
-    const links: HTMLAnchorElement[] = Array.from(document.querySelectorAll('.tab-content a'));
+    const links: HTMLAnchorElement[] = Array.from(document.querySelectorAll('form + div a')); // get links from sidebar
     return links.map((link) => {
       return {
         title: link.innerText,
@@ -205,7 +211,9 @@ async function downloadPage(title: string, link: string): Promise<void> {
               createCodeElement.innerHTML = allCodeContent;
 
               const parentOfWidgetMultiFiles = raleDivs.snapshotItem(i) as HTMLElement;
-              parentOfWidgetMultiFiles.appendChild(createCodeElement);
+              try {
+              parentOfWidgetMultiFiles?.appendChild(createCodeElement);
+              } catch (err) {}
 
               const needToRemove = raleWithCodeEditor.snapshotItem(0) as HTMLElement;
               needToRemove.remove();
@@ -418,9 +426,11 @@ async function pageEvaluation({ SAVE_AS, SAVE_LESSON_AS }) {
   } else {
     node.style.cssText = 'margin-top: -70px';
 
+    try {
     const content = node?.childNodes[0]?.childNodes[0]?.childNodes[1]?.childNodes[0]?.childNodes[0];
     node?.childNodes[0]?.childNodes[0]?.childNodes[1]?.appendChild(content);
     node?.childNodes[0]?.childNodes[0]?.childNodes[0]?.remove();
+    } catch (err) {}
   }
 
   // Fetch available language of code snippets
@@ -498,8 +508,11 @@ async function buttonClicks() {
             createCodeElement.innerHTML = allCodeContent;
 
             const parentOfWidgetMultiFiles = widgetMultiFilesDiv.snapshotItem(i) as HTMLElement;
-            parentOfWidgetMultiFiles.appendChild(createCodeElement);
-          }
+            try {
+              
+            parentOfWidgetMultiFiles?.appendChild(createCodeElement);
+            } catch (err) {}
+            }
         }
       });
     }
@@ -588,7 +601,10 @@ async function buttonClicks() {
         createCodeElement.innerHTML = allCodeContent;
 
         const parentOfWidgetMultiFiles = devdDivs.snapshotItem(i) as HTMLElement;
-        parentOfWidgetMultiFiles.appendChild(createCodeElement);
+        try {
+        parentOfWidgetMultiFiles?.appendChild(createCodeElement);
+          
+        } catch (err) {}
 
       }
 

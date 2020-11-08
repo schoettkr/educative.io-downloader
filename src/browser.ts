@@ -7,7 +7,8 @@ let isSpecialBrowser = false;
 async function launchBrowser(args?: object) {
   let configuration: LaunchOptions = {
     userDataDir: ROOT_PATH + 'data',
-    headless: IS_HEADLESS
+    headless: IS_HEADLESS,
+    args: ['--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
   };
 
   if (args) {
@@ -18,7 +19,9 @@ async function launchBrowser(args?: object) {
   }
 
   browser = await launch(configuration);
+  browser.on('disconnected', launchBrowser);
 }
+
 
 export async function getBrowser(): Promise<Browser> {
   if (!browser) {
