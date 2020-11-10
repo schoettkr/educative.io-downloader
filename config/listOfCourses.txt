@@ -1,0 +1,26 @@
+From student pack:
+- https://www.educative.io/courses/hands-on-blockchain-hyperledger-fabric
+- https://www.educative.io/courses/software-design-patterns-best-practices
+- https://www.educative.io/courses/grokking-computer-networking
+- https://www.educative.io/courses/web-application-software-architecture-101
+- https://www.educative.io/courses/simplifying-javascript-handy-guide
+- https://www.educative.io/courses/css-theming-for-professionals
+- https://www.educative.io/courses/introduction-microservice-principles-concepts
+- https://www.educative.io/courses/database-design-fundamentals
+- https://www.educative.io/courses/learn-typescript-complete-course
+- https://www.educative.io/courses/docker-for-developers
+- https://www.educative.io/courses/web-application-security-everyday-software-engineer
+- https://www.educative.io/courses/definitive-guide-to-mongodb
+- https://www.educative.io/courses/practical-guide-to-kubernetes
+- https://www.educative.io/courses/cpp-17-in-detail-a-deep-dive
+- https://www.educative.io/courses/cpp-standard-library-including-cpp-14-and-cpp-17
+- https://www.educative.io/courses/modern-cpp-concurrency-in-practice-get-the-most-out-of-any-machine
+- https://www.educative.io/courses/learn-object-oriented-programming-in-cpp
+- https://www.educative.io/courses/grokking-data-science
+- https://www.educative.io/courses/zero-to-hero-with-progressive-web-apps
+- https://www.educative.io/courses/competitive-programming-in-cpp-keys-to-success
+- https://www.educative.io/courses/working-with-containers-docker-docker-compose
+- https://www.educative.io/courses/practical-security-defending-your-systems
+- https://www.educative.io/courses/good-parts-of-aws
+- https://www.educative.io/courses/road-to-react-with-hooks
+- https://www.educative.io/courses/using-typescript-with-react
